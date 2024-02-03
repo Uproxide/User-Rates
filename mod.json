@@ -1,0 +1,14 @@
+{
+	"geode": "2.0.0-beta.12",
+	"gd": "2.204",
+	"version": "v1.0.0",
+	"id": "uproxide.user_ratings",
+	"name": "User Ratings",
+	"developer": "Uproxide",
+	"description": "Adds user rating to gd!",
+	"resources": {
+		"sprites": [
+			"res/*.png"
+		]
+	}
+}
