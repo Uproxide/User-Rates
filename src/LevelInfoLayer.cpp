@@ -3,6 +3,7 @@
 #include <Geode/modify/LevelInfoLayer.hpp>
 #include <Geode/binding/LevelInfoLayer.hpp>
 #include <matjson.hpp>
+#include "Manager.h"
 
 using namespace geode::prelude;
 
@@ -16,7 +17,7 @@ public:
     bool init(GJGameLevel* p0, bool p1) {
         if (!LevelInfoLayer::init(p0, p1)) return false;
 
-        web::AsyncWebRequest()
+		web::AsyncWebRequest()
             .fetch("https://projectbdash.com/userrates/getRatedLevel.php?LevelID=" + std::to_string(p0->m_levelID))
             .text()
             .then([this](std::string const& str) {
@@ -75,6 +76,27 @@ public:
 			legendarySprite->setPosition(ccp(21.5, 21.625));
 			godlikeSprite->setPosition(ccp(21.5, 21.625));
 		}
+		else if (difficultything == 3) // hard
+		{
+			auto difficultyFace = CCSprite::createWithSpriteFrameName("difficulty_03_btn_001.png");
+			this->addChild(difficultyFace);
+			difficultyFace->setID("uproxide.user-rates/difficulty_face");
+			difficultyFace->setPosition(ccp(difficultyPosX, difficultyPosY));
+		}
+		else if (difficultything == 4) // harder
+		{
+			auto difficultyFace = CCSprite::createWithSpriteFrameName("difficulty_03_btn_001.png");
+			this->addChild(difficultyFace);
+			difficultyFace->setID("uproxide.user-rates/difficulty_face");
+			difficultyFace->setPosition(ccp(difficultyPosX, difficultyPosY));
+		}
+		else if (difficultything == 5) // insane 
+		{
+			auto difficultyFace = CCSprite::createWithSpriteFrameName("difficulty_03_btn_001.png");
+			this->addChild(difficultyFace);
+			difficultyFace->setID("uproxide.user-rates/difficulty_face");
+			difficultyFace->setPosition(ccp(difficultyPosX, difficultyPosY));
+		}
 		else if (difficultything == 6) // easy demon
 		{
 			auto difficultyFace = CCSprite::createWithSpriteFrameName("difficulty_07_btn2_001.png");
@@ -115,6 +137,12 @@ public:
 		else if (glow == 4)
 		{
 			difficulty->addChild(godlikeSprite);
+		}
+
+		void onPlay(cocos2d::CCObject* sender);
+		{
+			Manager::setStarsShit(stars);
+			LevelInfoLayer::onPlay(nullptr);
 		}
 	}
 

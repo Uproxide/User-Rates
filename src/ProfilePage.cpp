@@ -16,7 +16,7 @@ class $modify(ProfilePage) {
         if (!ProfilePage::init(p0, p1)) return false;
 
         web::AsyncWebRequest()
-            .fetch("https://projectbdash.com/userrates/getUserStats.php?UserID=" + std::to_string(p1))
+            .fetch("https://projectbdash.com/userrates/getUserStats.php?UserID=" + std::to_string(p0))
             .text()
             .then([this](std::string const& str) {
                 parseRequestString(str);
